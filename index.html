@@ -7,17 +7,95 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="leaflet.ajax.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 </head>
 <style>
     #maps{
         height: 570px;
     }
 </style>
-<body>
+    <!-- <button id="jepara">jepara</button>
+    <button id="kuwasen">kuwasen</button> -->
     <div id="maps"></div>
 </body>
 <script>
-    var mymap = L.map('maps').setView([-6.575828608949939, 110.67487586495848], 10);
+//     var mymap = L.map('maps').setView([-6.575665483119838, 110.68305517400505], 13);
+//     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+//     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//     maxZoom: 18,
+//     id: 'mapbox/streets-v11',
+//     tileSize: 512,
+//     zoomOffset: -1,
+//     accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+// }).addTo(mymap);
+
+// var styleku = {
+//     "color": "red",
+//     "weight" : 3
+// }
+// var polygon = L.polygon([
+//     [-6.5736825279905915, 110.68483799741695], [-6.575251900245213, 110.68406837031544], [-6.575855503639252, 110.68601269141395], [-6.573441085665572, 110.68686333189454]
+// ]).addTo(mymap);
+// function popUp(f,l){
+//     var out = [];
+//     if (f.properties){
+//         for(key in f.properties){
+//             out.push(key+": "+"<b>"+f.properties[key]+"</b>");
+//         }
+//         l.bindPopup(out.join("<br />"));
+//     }
+// }
+
+// var jepara = new L.GeoJSON.AJAX(["kkn unisnu by virgiawan.geojson"],{onEachFeature:popUp, style:styleku}).addTo(mymap);
+// var kuwasen = new L.GeoJSON.AJAX(["mbajal.geojson"],{onEachFeature:popUp, style:styleku}).remove(mymap);
+
+// // var jsonTest = new L.GeoJSON.AJAX(["jalan.geojson"],{onEachFeature:popUp, style:styleku}).addTo(mymap);
+// $('#jepara').click(function(){
+//     // location.reload();
+//     var jepara = new L.GeoJSON.AJAX(["kkn unisnu by virgiawan.geojson"],{onEachFeature:popUp, style:styleku}).addTo(mymap);
+//     var kuwasen = new L.GeoJSON.AJAX(["mbajal.geojson"],{onEachFeature:popUp, style:styleku}).remove(mymap);
+//     // var kuwasen = undefined;
+//     // console.log('jepara');
+// });
+// $('#kuwasen').click(function(){
+//     // var jepara = undefined;
+//     var jepara = new L.GeoJSON.AJAX(["kkn unisnu by virgiawan.geojson"],{onEachFeature:popUp, style:styleku}).remove(mymap);
+//     var kuwasen = new L.GeoJSON.AJAX(["mbajal.geojson"],{onEachFeature:popUp, style:styleku}).addTo(mymap);
+// //         // location.reload();
+// //         // console.log('kuwasen');
+    
+// });
+//     $('input[type="checkbox"][name="jepara"]').change(function() {
+//         if(this.checked) {
+//             var jepara = new L.GeoJSON.AJAX(["kkn unisnu by virgiawan.geojson"],{onEachFeature:popUp, style:styleku}).addTo(mymap);
+//             // do something when checked
+//         }else{
+//             var jepara
+//         }
+//  });
+// var checkedCheckbox = "";
+// $("input[type='checkbox']").change(function () { 
+//     // var name = $(this).attr("id") + ", ";
+//     var name = new L.GeoJSON.AJAX(["kkn unisnu by virgiawan.geojson"],{onEachFeature:popUp, style:styleku}).addTo(mymap);
+//     if ($(this).prop("checked"))
+//         checkedCheckbox += name;
+//     else
+//         checkedCheckbox = checkedCheckbox.replace(name);   
+//     $("span").text(checkedCheckbox);
+// })
+</script>
+<script>
+//     var map = L.map('maps').setView([-6.575665483119838, 110.68305517400505], 13);
+
+// L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+//     maxZoom: 18,
+//     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+//         'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//     id: 'mapbox/light-v9',
+//     tileSize: 512,
+//     zoomOffset: -1
+// }).addTo(map);
+    var map = L.map('maps').setView([-6.575665483119838, 110.68305517400505], 13);
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -25,12 +103,13 @@
     tileSize: 512,
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
-}).addTo(mymap);
+}).addTo(map);
 
 var styleku = {
     "color": "red",
     "weight" : 3
 }
+
 function popUp(f,l){
     var out = [];
     if (f.properties){
@@ -40,6 +119,22 @@ function popUp(f,l){
         l.bindPopup(out.join("<br />"));
     }
 }
-var jsonTest = new L.GeoJSON.AJAX(["kkn unisnu by virgiawan.geojson"],{onEachFeature:popUp, style:styleku}).addTo(mymap);
+// function popups(feature, layer) {
+// 		var popupContent = "<p>I started out as a GeoJSON " +
+// 				feature.geometry.type + ", but now I'm a Leaflet vector!</p>";
+
+// 		if (feature.properties && feature.properties.popupContent) {
+// 			popupContent += feature.properties.popupContent;
+// 		}
+
+// 		layer.bindPopup(popupContent);
+// 	}
+var geojson = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"stroke":"#555555","stroke-width":2,"stroke-opacity":1,"fill":"#555555","fill-opacity":0.5,"id":1,"rt":1},"geometry":{"type":"Polygon","coordinates":[[[110.68202018737792,-6.5794347577918835],[110.68294286727905,-6.579605288570213],[110.68498134613036,-6.579040405142802],[110.68549633026123,-6.57896579784965],[110.68621516227722,-6.578667368564999],[110.68670868873596,-6.578251698905508],[110.68674087524414,-6.577175219452991],[110.68605422973633,-6.57589623093363],[110.68395137786865,-6.57525673543969],[110.68257808685303,-6.577388383886195],[110.68206310272215,-6.578454204680504],[110.68202018737792,-6.5794347577918835]]]}},{"type":"Feature","properties":{"stroke":"#555555","stroke-width":2,"stroke-opacity":1,"fill":"#555555","fill-opacity":0.5,"id":2,"rt":2},"geometry":{"type":"Polygon","coordinates":[[[110.68862915039061,-6.5792642269550194],[110.68965911865234,-6.579690553937419],[110.69060325622557,-6.579775819289995],[110.69068908691406,-6.579221594236666],[110.69120407104492,-6.578368939101091],[110.68901538848877,-6.577772079635522],[110.68845748901367,-6.577644181085321],[110.688157081604,-6.578241040704537],[110.68862915039061,-6.5792642269550194]]]}}]}
+;
+L.geoJSON(geojson, {onEachFeature:popUp, style:styleku}).addTo(map);
+
+// var jepara = new L.GeoJSON.AJAX(["kkn unisnu by virgiawan.geojson"],{onEachFeature:popUp, style:styleku}).addTo(mymap);
+
+</script>
 </script>
 </html>
